@@ -44,11 +44,11 @@ org_point = "{0},{1}".format(point[0], point[1])
 # Собираем параметры для запроса к StaticMapsAPI:
 map_params = {
     # позиционируем карту центром на наш исходный адрес
-    "ll": address_ll,
+    # "ll": address_ll,
     "spn": ",".join(map(str, get_spn(organization))),
     "l": "map",
     # добавим точку, чтобы указать найденную аптеку
-    "pt": "{0},pm2ntl".format(org_point)
+    "pt": f"{org_point},pm2ntl~{address_ll},ya_ru"
 }
 
 map_api_server = "http://static-maps.yandex.ru/1.x/"
