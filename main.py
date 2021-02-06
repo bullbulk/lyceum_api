@@ -32,7 +32,6 @@ json_response = response.json()
 
 # Получаем первую найденную организацию.
 organization = json_response["features"][0]
-print(organization)
 # Название организации.
 org_name = organization["properties"]["CompanyMetaData"]["name"]
 # Адрес организации.
@@ -49,12 +48,11 @@ map_params = {
     "spn": ",".join(map(str, get_spn(organization))),
     "l": "map",
     # добавим точку, чтобы указать найденную аптеку
-    "pt": "{0},pm2dgl".format(org_point)
+    "pt": "{0},pm2ntl".format(org_point)
 }
 
 map_api_server = "http://static-maps.yandex.ru/1.x/"
 # ... и выполняем запрос
 response = requests.get(map_api_server, params=map_params)
-print(response.status_code, response.url)
 with BytesIO(response.content) as buffer:
     Image.open(buffer).show()
