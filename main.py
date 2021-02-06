@@ -2,21 +2,10 @@ from io import BytesIO
 
 import requests
 from PIL import Image
-
+from spn import *
 
 class SearchError(BaseException):
     pass
-
-
-def get_spn(subject: dict):
-    coords = subject['properties']['boundedBy']
-    max_x = max(coords, key=lambda x: x[0])[0]
-    min_x = min(coords, key=lambda x: x[0])[0]
-    max_y = max(coords, key=lambda x: x[1])[1]
-    min_y = max(coords, key=lambda x: x[1])[1]
-
-    return max_x - min_x, max_y - min_y
-
 
 search_api_server = "https://search-maps.yandex.ru/v1/"
 api_key = "7bb93799-c0f9-45ee-8f5c-616a177a7cc3"
