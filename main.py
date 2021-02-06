@@ -4,8 +4,10 @@ import requests
 from PIL import Image
 from spn import *
 
+
 class SearchError(BaseException):
     pass
+
 
 search_api_server = "https://search-maps.yandex.ru/v1/"
 api_key = "7bb93799-c0f9-45ee-8f5c-616a177a7cc3"
