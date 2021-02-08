@@ -1,21 +1,26 @@
+import argparse
 from io import BytesIO
 
-import requests
 from PIL import Image
+
 from spn import *
+from api_utils import *
 
 
 class SearchError(BaseException):
     pass
 
 
-search_api_server = "https://search-maps.yandex.ru/v1/"
-api_key = "7bb93799-c0f9-45ee-8f5c-616a177a7cc3"
+parser = argparse.ArgumentParser()
+parser.add_argument('name', type=str)
 
-address_ll = "37.588392,55.734036"
+address_ll = ','.join(get_point(parser.parse_args().name))
+
+search_api_server = "https://search-maps.yandex.ru/v1/"
+org_api_key = "7bb93799-c0f9-45ee-8f5c-616a177a7cc3"
 
 search_params = {
-    "apikey": api_key,
+    "apikey": org_api_key,
     "text": "аптека",
     "lang": "ru_RU",
     "ll": address_ll,
