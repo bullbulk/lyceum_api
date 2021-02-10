@@ -12,9 +12,9 @@ class SearchError(BaseException):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('name', type=str)
+parser.add_argument('name', type=str, nargs="*")
 
-address_ll = ','.join(get_point(parser.parse_args().name))
+address_ll = ','.join(get_point(" ".join(parser.parse_args().name)))
 
 search_api_server = "https://search-maps.yandex.ru/v1/"
 org_api_key = "7bb93799-c0f9-45ee-8f5c-616a177a7cc3"
